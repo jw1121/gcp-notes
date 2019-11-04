@@ -1,0 +1,74 @@
+createdAt: "2019-09-07T20:17:18.359Z"
+updatedAt: "2019-11-03T23:57:18.429Z"
+type: "MARKDOWN_NOTE"
+folder: "830f33e7d047ca73102c"
+title: "GCP Storage"
+tags: []
+content: '''
+  # GCP Storage
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/-Fkgp0pkSdc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  
+  
+  ![data-lifecycle-3.svg](https://cloud.google.com/solutions/images/data-lifecycle-3.svg)
+  ## Persistent Disk
+  - Zonal and Regional standard and SSD persistant disks are durable network storage.
+  - The data on each PD is distributed across several physical disks to ensure redundancy and optimal performance.
+  - Types:
+    - Zonal (standard and SSD) cost efficient
+    - Regional (standard and SSD) for performance and data redundancy across multiple zones
+    - Local (standard and SSD) for very fast scratch disk/cache.
+  - The application for Standard PD includes **video editing** and SSD includes **database** and **enterprise application**
+  - The use case can be as Bootdisk, RW data, RO for mutiple VMs, replications
+  - greater IOPS and throughput performance on instance with greater vCPUs.
+  
+  ### Zonal
+    - PD write operationals are capped by network egress cap.
+    - The data are encrypted before written to the disk.  
+    - Single file system with no partition table offer best performance.
+    - Format disk with:
+  ```
+  sudo mkfs.ext4 -m 0 -F -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/[DEVICE_ID]
+  ```
+  - create disk
+  - resize disk
+  
+  - Limit
+    - Cannot attach disk to an instance in another project
+    - Most instance have max 128 disks and 257TB total disk limit.
+    - Instance with shared-core machine type have max 16 persistnent disks.
+    - Predefined and custom machine type with minimum 1vCPU have max 128 persistent disks.
+    - Each disk can be large as 64TB
+  ### Regional 
+    - Failover to another zone in same region
+    - replicate data over two zone in the same region
+    - Better PTO and RPO then disk snapshot.
+    - Can't use with meory optimized VMs.
+    
+  ### Local SSD
+    - 375GB and can add upto 8 SSDs or 3TB per instance.
+    - persist data until instance is stopped or deleted.
+  
+  ### Storage bucket
+  - built-in redundancy 
+  - bucket is global 
+  - can mount bucket as file system
+  
+  ## Cloud Storage
+  - Avoid sequential filename when uploading many files parallel. Because files with sequential names are stored consecutively, they are likely to hit the same backend server, meaning that throughput will be constrained
+  - bucket namespace is global and public
+  - dont use any PII in you object name (eg id, email, etc).
+  - bucket name can appear in a DNS record.
+  - avoid smaller chunks and upload entire content in single chunk for latency cost and QPS
+  - Available storage options: Multi-Regional Storage, Regional Storage, Nearline Storage, Coldline Storage
+  
+  ## Cloud Storage gsutil
+  
+  ## Storage Transfer Service
+  - Intended for bulk transfer and is optimized for data volumes greater than 1 TB.
+  
+  ## Transfer Appliance
+  - A high-capacity storage server that you lease from Google
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

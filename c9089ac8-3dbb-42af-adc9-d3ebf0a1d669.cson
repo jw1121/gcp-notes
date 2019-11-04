@@ -1,0 +1,107 @@
+createdAt: "2019-08-22T16:13:04.290Z"
+updatedAt: "2019-11-01T06:08:09.438Z"
+type: "MARKDOWN_NOTE"
+folder: "830f33e7d047ca73102c"
+title: "GCP Security"
+tags: []
+content: '''
+  # GCP Security  
+  
+  ## GCP IAM Service Account
+  > Full access control and visibility to centrolly manage cloud resources.
+  
+  - Manage authorization only.
+  - SA is both `resource` and `identity`, where user can be granted access to SA and grant roles to a SA.
+  - use display name (email) to help manage SA.
+  - keys are used for service-to-service call.
+  - Can create max 10 keys per SA and 100 SA per project
+  - two types of keys:
+    - GCP managed keys
+      - Can’t be downloaded and auto rotated before 2 weeks
+    - User managed keys
+      - can download and expires after 10 yrs
+  
+  ### Roles
+  #### Role types:
+  - Primitive roles
+    - viewer: read-only permission
+    - editor: viwer + permission to modify 
+    - owner: editor + manage role and permission
+  - Predefined roles
+    - additional role that give granular access to specific resource.
+  - Custom roles
+    - user can create reate custiomzed IAM roles.
+    - `iam.roles.create` permission required to create custome role
+     
+  ### Service Accounts
+  - special kind of account that belong to an application or a VM instance.
+  - Used for:
+    - Running workload on VM
+    - Running workload on on-prem or data center that calls Google APIs
+    - Running workload not tied to the lifecycle of a human user.
+  - SA do not have password and cannot log in via broswers or cookies
+  - SA associated with RSA key for authentication
+  - SA are not memebr of Gsuite
+  - User can be given permission to impersonate SA.
+  - User can create short-lived credentials to assume the identity of SA.
+  
+  ### Resource hierarchy
+    - Organization, Folder, Project, Resource
+    - IAM policies are hierachical and progate down the structure.
+  
+  ### Best practice
+  - Use hierachy to group resources that share same trust boundary and use inheritance. (eg. group instead of user(s), folder instead of projects)
+  - Use the security principle of least privilege when granting IAM roles.
+  - Grant role to group instead of a user.
+  - policy set on child resource cannot restrict access granted on it parent
+  - Use label to annotate, group, and filter resources
+  
+  ## KMS
+  - 3 type of encryption keys: GMEK, CMEK (Customer Managed Encryption Key), CSEK (Customer Supplyed Encryption Key) 
+  - CMEK works with:BigQuery, Cloud Build, Cloud Dataproc, Cloud Storage, Compute Engine
+  - In Cloud Storage CMEK and CSEK uses the key when encrypting:
+    - The object's data.
+    - The object's CRC32C checksum.
+    - The object's MD5 hash.
+  - metadata can be read and updated without the encryption key.
+  
+  ## Cloud Identity 
+  > `Identity groups` let you map to external identity from outside and designate spacial label external.
+  
+  ## VPC service control
+  > Mitigate the risk of data exfiltration from services like Cloud Storage and BigQuery.
+  
+  #### Benefits
+  - Prevent access from unauthorized networks using stolen credentials
+  - Prevent data transfer by malicious insider or comprised code
+  - Prevent exposure of private data caused by misconfigured IAM.
+  - Its not design to enforce control on metadata acccess/movement.
+  
+  ## Cloud DLP
+  > Help you better understand and manage sensitive data to classify and redact.
+  
+  ## Cloud Armor
+  > Defense at scale against infrastructure and application DDOS and other web attacks.
+    
+  - Made up of rules that allow or prohibit traffic to your Load Balaancer
+  - Can preview thr effects of the rules in a security policy in stackdriver log without enforcing the actions in the rules. 
+  - rules are evaluated based on  priority set, from lowest to highest or 0 to 2147483647.
+  - 3 use cases:
+      - Limit access to the GCP HTTP(S) Load Balancer with allow lists
+      - Block traffic at the edge with deny lists
+      - Allow traffic to the HTTP Load Balancer only from allowed 3rd party/authorized users.
+  - Cloud Armor can be used in followin scenarios:
+      - Allow traffic only from LB and GCP firewall rules
+      - Allow traffic only from LB and GCP IAP
+  
+  
+  ## Cloud Idnetity-Aware Proxy
+  > Controls access to your cloud applications and VMs by verifying user identity and context of the request
+  
+   - Use IAP to enforce access control policies for reources (app)
+   - IAP secure authentication and authorization of all reuqests to App Engine or HTTP(S) Load Balance
+  
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

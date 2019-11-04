@@ -1,0 +1,60 @@
+createdAt: "2019-06-22T19:26:34.168Z"
+updatedAt: "2019-11-02T15:45:45.847Z"
+type: "MARKDOWN_NOTE"
+folder: "830f33e7d047ca73102c"
+title: "GCP Cloud Load Balancer"
+tags: []
+content: '''
+  # GCP Cloud Load Balancer
+  ## HTTP(s) Load Balancer
+   
+  #### Main point
+    - HTTPS proxy can have up to *15 certs* installed.
+    - *SSL policy* to control the features of SSL (version, ciphers, etc)
+    - supports TLS 1.0, 1.1, 1.2
+    - Backend serivces direct traffic to 1+ attached instance groupd (backends)
+    - connection drainig
+    - Backend bucket direct traffic to GCS
+    - Load is directed to the region closest to the user, to zone according to capacity and round-robin evenly within a zone
+    - **Session affinity** redirect request from same client to the same VM instance
+    - The **response timeout** is time LB will wait for backend to complete reponse. Default at 30 sec
+    - TCP session timeout of fixed 10 mins is not configuable.
+  
+  ###### The load balancer blocks the following for HTTP/1.1 compliance:
+  
+  - It cannot parse the first line of the request.
+  - A header is missing the : delimiter.
+  - Headers or the first line contain invalid characters.
+  - The content length is not a valid number, or there are multiple content length headers.
+  - There are multiple transfer encoding keys, or there are unrecognized transfer encoding values.
+  - There's a non-chunked body and no content length specified.
+  - Body chunks are unparseable. This is the only case where some data will make it to the backend. The load balancer will close the connections to client and backend when it receives an unparseable chunk.
+  
+  ###### The load balancer blocks the request if any of the following are true:
+  
+  - The combination of request URL and headers is longer than about 15KB.
+  - The request method does not allow a body, but the request has one.
+  - The request contains an upgrade header.
+  - The HTTP version is unknown.
+  
+  ###### The load balancer blocks the backend's response if any of the following are true:
+  
+  - The response headers' total size is longer than about 128KB.
+  - The HTTP version is unknown.
+  
+  ## TCP Proxy Load Balance
+  * Automatically route traffic to instance that are closest to the user.
+  * Load balance is regional unless subscribe to Premium Tier.
+  * TCP is for Non-HTTP traffic.
+  
+  #### Use Network LB
+  * when you need UDP or non-HTTP TCP traffic
+  * when its acceptable to decrypt SSL traffic by backend server
+  * when self managed SSL is used. Google managed SSl cert is availableonly to HTTP(S) traffic
+  
+  
+  
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: true

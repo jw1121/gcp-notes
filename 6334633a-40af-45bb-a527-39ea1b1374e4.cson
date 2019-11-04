@@ -1,0 +1,23 @@
+createdAt: "2019-10-15T01:32:36.715Z"
+updatedAt: "2019-11-02T14:56:37.183Z"
+type: "MARKDOWN_NOTE"
+folder: "830f33e7d047ca73102c"
+title: "DElETE *K8S*"
+tags: []
+content: '''
+  ### DElETE *K8S*
+  
+  - K8s Proxy to connect to Pod using ClusterIP
+  - NodePort open a port on the node to forward to the Service.
+      - this method work for cost sensetive or temporary (eg. demo)
+  - LoadBalancer will spin up `Network Load Balancer`
+  - Each service expose through LB will get its own IP and have to pay for LoadBalancer per exposed service.
+  - Ingress sit in front of multiple services and act as entrypoint to your cluster.
+  - Ingress will spin up `HTTP(S) Load Balancer`
+  - Ingress is most powerful with multiple types of controller: Google Cloud Load Balancer, Nginx, Contour, Istio and more.
+  
+  
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: true

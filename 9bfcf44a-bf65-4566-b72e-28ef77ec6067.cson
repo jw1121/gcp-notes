@@ -1,0 +1,135 @@
+createdAt: "2019-08-22T16:11:48.582Z"
+updatedAt: "2019-11-04T03:53:02.932Z"
+type: "MARKDOWN_NOTE"
+folder: "830f33e7d047ca73102c"
+title: "GCP Database"
+tags: []
+content: '''
+  # GCP Database
+  
+  Global  - Spanner, Bigtable, Firestore
+  Regional - Cloud SQL
+  
+  ## BigTable
+  > Low latency, sacable data access NoSql database
+  
+  - Good for don’t require ACID and structure data
+    - eventual consistent Storage
+    - frequent data ingestion
+    - analytics and operational 
+    - good for large single-key data with low latency, Time-series, marketing, Finance, IOT, and graph data.
+    - not good for less than 1 TB
+  - Table data is always encrypted at rest
+   
+  ## Spanner
+  > Fully managed, scalable, globaly distributed relational database.
+  
+   - A horizontally scalable, globally consistent, relational database service
+   - Versioned key-value store distributed database.
+   - Cloud Spanner uses a synchronous, Paxos-based replication scheme
+   - Configuration set at instance creation time and cannot be change after creation of instance.
+   - Node count can be set and changed at anytime but no auto scaling available.
+  - multi-region configurations enable your application to achieve faster reads in more places at the cost of a small increase in write latency.
+  - Parent-child table will use primary key to decide how to store rows of data. (interleaved table)
+  - The parent-child table relationships that you define, along with the primary key values that you set for rows of related tables, give you control over how data is split under the hood.
+  - Key of table can’t be changed.
+  - Avoid hotspot by using one of these technique:
+    * Hash the key and store it in a column. Use the hash column (or the hash column and the unique key columns together) as the primary key.
+    * Swap the order of the columns in the primary key.
+    * Use a Universally Unique Identifier (UUID). Version 4 UUID is recommended, because it uses random values in the high-order bits. Don't use a UUID algorithm (such as version 1 UUID) that stores the timestamp in the high order bits.
+    * Bit-reverse sequential values.
+  - Data stored at rest in Cloud Spanner is encrypted by default.
+   
+  ## Datastore (Firestore)
+  > fully managed, serverless, cloud NoSQL document database.
+  
+   - ACID/Transactional NoSql DB for web and mobile application.
+   - Automatically handle sharding and replication.
+   - Optimized for small set of data.
+   - Read by key is Strong consistency and others are eventual consistency.
+   - Encrypted at rest 
+   - Highly structured schemaless data
+   - Highly scalable
+   
+  ## Cloud SQL
+  > Fully managed MySql and PostgreSQL database service
+  
+  - 99.95% availability
+   - Up to 416GB RAM and 64 CPUs and 30TB storage
+   - Auto replication, failover and backup
+  - It is appropriate for typical **online transaction processing** (OLTP) workloads.
+  
+  ## BigQuery
+  > Serverless, highly-scalable data warehouse.
+  
+   - Data warehouse solution that works with petabytes of data in short time.
+   - Large scale data warehouse service with append-only tables  
+   - OLAP
+  
+  ## Pub/Sub
+  > Durable low latency messaging
+  
+  - published message delivered to all of its subscriptions
+  - Can integrate:
+    - Cloud Log, Cloud API, Dataflow, Cloud Storage, Compute Engine
+  - Use Cases:
+    - Distribute workload
+    - Asynchronous workflow
+    - Event notifications
+    - Refreshing distribute cache
+    - Loggin to multiple system
+    - Data streaming
+    - Reliability improvement
+  - The load balancer redirects the message to nearest storage allowed even for multi region pulisher the message is stored in single region.
+  - Pub/sub is divide into *data plane* and *control plane* 
+  - Proceess flow: router -> proxy -> publisher forwarder -> subscriber forwarder 
+  
+  ---
+  ### Bigtable usage
+  - **Real-time app data**: Cloud Bigtable can be accessed from apps running in App Engine flexible environment, GKE, and Compute Engine for real-time live-serving workloads.
+  - **Stream processing**: As data is ingested by Cloud Pub/Sub, Cloud Dataflow can be used to transform and load the data into Cloud Bigtable.
+  - **IoT time series data**: Data captured by sensors and streamed into GCP can be stored using time-series schemas in Cloud Bigtable.
+  - **Adtech workloads**: Cloud Bigtable can be used to store and track ad impressions, as well as a source for follow-on processing and analysis using Cloud Dataproc and Cloud Dataflow.
+  - **Data ingestion**: Cloud Dataflow or Cloud Dataproc can be used to transform and load data from Cloud Storage into Cloud Bigtable.
+  - **Analytical workloads**: Cloud Dataflow can be used to perform complex aggregations directly from data stored in Cloud Bigtable, and Cloud Dataproc can be used to execute Hadoop or Spark processing and machine-learning tasks.
+  - **Apache HBase replacement**: Cloud Bigtable can also be used as a drop-in replacement for systems built using Apache HBase, an open source database based on the original Cloud Bigtable paper authored by Google. Cloud Bigtable is compliant with the HBase 1.x APIs so it can be integrated into many existing big-data systems. Apache Cassandra uses a data model based on the one found in the Cloud Bigtable paper, meaning Cloud Bigtable can also support several workloads that leverage a wide-column-oriented schema and structure.
+  
+  ### Spanner usage
+  - **Financial services**: Financial services workloads require strong consistency across read/write operations. Cloud Spanner provides this consistency without sacrificing high availability.
+  - **Ad tech**: Latency is a key consideration in the ad tech space. Cloud Spanner facilitates low-latency querying without compromising scale or availability.
+  - **Retail and global supply chain**: The need for global scale can force supply chain experts to make a trade-off between consistency and maintenance costs. Cloud Spanner offers automatic, global, synchronous replication with low latency, which means that data is always consistent and highly available.
+  
+  ### Cloud SQL usage
+  
+  - **Financial transactions**: Storing financial transactions requires ACID database semantics, and data is often spread across multiple tables, so complex transaction support is required.
+  - **User credentials**: Storing passwords or other secure data requires complex field support and enforcement along with schema validation.
+  - **Customer orders**: Orders or invoices typically include highly normalized relational data and multi-table transaction support when capturing inventory changes.
+  
+  ### BigQuery usage
+  - **Processing**: Data from source systems is cleansed, normalized, and processed across multiple machines, and stored in analytical systems.
+  - **Analysis**: Processed data is stored in systems that allow for ad-hoc querying and exploration.
+  - **Understanding**: Based on analytical results, data is used to train and test automated machine-learning models.
+  
+  ### Dataproc usage
+  - multiple regional product
+  - **Log processing**: With minimal modification, you can process large amounts of text log data per day from several sources using existing MapReduce.
+  - **Reporting**: Aggregate data into reports and store the data in BigQuery. Then you can push the aggregate data to apps that power dashboards and conduct analysis.
+  - **On-demand Spark clusters**: Quickly launch ad-hoc clusters to analyze data is stored in blob storage using Spark (Spark SQL, PySpark, Spark shell).
+  - **Machine learning**: Use the Spark Machine Learning Libraries (MLlib), which are preinstalled on the cluster, to customize and run classification algorithms. 
+  
+  ### Dataprep usage
+  - For Visual data exploration, cleaning, and processing
+  - **Transform data** of any size stored in CSV, JSON, or relational-table formats
+  - Clean training data **Machine Learning** models.
+  - Transform raw data to ingest into data warehousing tools such as BigQuery for **Analytics**
+  
+  ### Dataflow usage
+   - **MapReduce replacement**: Process parallel workloads where non-MapReduce processing paradigms have led to operational complexity or frustration.
+  - **User analytics**: Analyze high-volume user-behavior data, such as in-game events, click stream data, and retail sales data.
+  - **Data science**: Process large amounts of data to make scientific discoveries and predictions, such as genomics, weather, and financial data.
+  - **ETL**: Ingest, transform, and load data into a data warehouse, such as BigQuery.
+  - **Log processing**: Process continuous event-log data processing to build real-time dashboards, app metrics, and alerts..
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

@@ -1,0 +1,44 @@
+createdAt: "2019-09-16T02:16:39.107Z"
+updatedAt: "2019-11-04T03:33:28.343Z"
+type: "MARKDOWN_NOTE"
+folder: "830f33e7d047ca73102c"
+title: "GCP OTHER"
+tags: []
+content: '''
+  # GCP OTHER
+  
+  ## Resource Manager
+  
+  
+  ### Migration
+  https://cloud.google.com/solutions/migration-center/
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/-4dT6leCz1E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  
+  
+  ### App Engine
+  https://cloud.google.com/appengine/quotas#When_a_Resource_is_Depleted
+  
+  
+  
+  Security
+      IAM, Cloud Identity, IAP, KMS, Cloud Armor, VPC service control, Cloud DLP, 
+  Compute
+      Compute, App Engine, K8S, Cloud Function,
+  Network
+      Interconnect, Peering, VPC, Load Balancer, DNS,
+  Database
+      Datastore, Bigtable, Bigquery, Spanner, Cloud sql,
+  Storage
+      Data Transfer Service, Storage Transfer Service, Transfer Appliance,
+  LOG
+      Stackdriver (Monitor, logging, Error Report, Trace, Debug),
+  Analytic
+      Dataflow, Dataproc, DataPrep,
+  
+  
+  Anthos, endpoint vs apigee, Cloud Composer,   
+  Cloud Registry, Cloud Build, Cloud Deployment
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

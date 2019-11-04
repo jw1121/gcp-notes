@@ -1,0 +1,21 @@
+createdAt: "2019-10-02T04:58:35.637Z"
+updatedAt: "2019-10-15T03:56:27.183Z"
+type: "MARKDOWN_NOTE"
+folder: "830f33e7d047ca73102c"
+title: "Cloud Shell"
+tags: []
+content: '''
+  # Cloud Shell
+  
+  - It provision per user, per session.
+  - The instance persists until an hour of inactivity.
+  - 5GB disk space but deleted after 120 days of inactivity.
+  - globally distributed across regions
+  - You can install software but it will not persist
+  - It supports Java, Go, Python, Node.js, Ruby, PHP and .NET
+  - You can switch to Boost mode to temporarily increase the VM power
+  - You open Cloud Shell in safe mode to fix any issue.
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: true

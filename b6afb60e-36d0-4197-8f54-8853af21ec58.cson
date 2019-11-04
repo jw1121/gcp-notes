@@ -1,0 +1,35 @@
+createdAt: "2019-08-22T16:25:52.641Z"
+updatedAt: "2019-11-02T14:23:20.745Z"
+type: "MARKDOWN_NOTE"
+folder: "830f33e7d047ca73102c"
+title: "Need to know"
+tags: []
+content: '''
+  # Need to know
+  
+  - Google Compute Engine vs. Google App Engine
+  - Standard VMs. vs Preemptible VMs
+  - Local SSD vs. SSD Persistent Disks
+  - Global vs. Regional vs. Zonal resources
+  - Google App Engine vs. Google Kubernetes Engine
+  - HTTP Load Balancer vs. Network Load Balancer
+  - Primitive IAM Roles vs. predefined IAM Roles
+  - App Engine Standard vs. App Engine Flex
+  - Cloud Storage vs. BigQuery for Stackdriver Sink
+  - How to create multiple env with Deployment Manager?
+      - by using `cloudresourcemanager.v1.project`
+  - When do you use Deployment Manger vs GKE deployment?
+      - GKE deployment to create `pods` and Deployment Manager to create cluster/ infrastructure
+  
+  
+  
+  
+  [GCP Flowcharts · Missives about mostly GCP related things](https://grumpygrace.dev/posts/gcp-flowcharts/)
+  
+  [Building scalable and resilient applications](https://cloud.google.com/solutions/scalable-and-resilient-apps)
+'''
+linesHighlighted: [
+  19
+]
+isStarred: false
+isTrashed: false

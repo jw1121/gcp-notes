@@ -1,0 +1,46 @@
+createdAt: "2019-08-22T16:12:50.634Z"
+updatedAt: "2019-11-04T03:30:57.908Z"
+type: "MARKDOWN_NOTE"
+folder: "830f33e7d047ca73102c"
+title: "GCP Compute"
+tags: []
+content: '''
+  # GCP Compute
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/BOJta-SD6Y4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  
+  Live migration - copy source local disk, persistent disk, memory, network, VM state to target.
+  	- GPU can’t live migrate.
+  	- three stages: pre, blackout, post
+  Preemptive VM
+   	- VM can stop at anytime due to an system event.
+  	- always terminates after 24hr
+  	- might not be available. So not cover by SLA
+  	- no charge for preempted VM within 60 sec
+  	- no discount for preemptible premium OS
+  Instance Template
+  	- is global resource but resource in the template might be bound to zone or region.
+  	- once create cannot be updated.
+  Instance Groups
+  	Managed instance group: run applications on multiple identical VM
+  		- auto healing, Load balance, auto scaling, auto update, regional
+          - By default regional managed instance group distributes in three zones.
+          - It’s recommended to over provision by 50% for auto redistribution.
+              - It will alway try to have equal number of instance distributions.
+  	Unmanaged instance group: Load balance across a fleet of VM
+  Sole Tenant nodes are equivalent to physical dedicated server.
+  
+  
+  
+  Instance group
+    - managed vs unmanned groups
+  
+  
+  
+  - connecting to VM without external IP
+    - VPN connection 
+    - bastion host
+    - Cloud IAP
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

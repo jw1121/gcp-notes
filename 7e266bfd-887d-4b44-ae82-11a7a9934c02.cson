@@ -1,0 +1,36 @@
+createdAt: "2019-10-22T05:32:47.754Z"
+updatedAt: "2019-10-22T05:59:17.142Z"
+type: "MARKDOWN_NOTE"
+folder: "830f33e7d047ca73102c"
+title: "PCI"
+tags: []
+content: '''
+  # PCI
+  
+  ## Goals
+  - Remove sensitive authentication data and limit data retention.
+  - Protect systems and networkd, and can be prepared to responsd to a system breach.
+  - Secure payment card application
+  - Monitor and control access to your systems
+  - Protect stored cardholder data.
+  - Fialize remaining compliance efforts, and ensure all controls are in place.
+  
+  ## Requirements
+  1. Install and maintain a firewall configuration to protect cardholder data
+  2. Do not use vendor-supplied defaults for system passwords and other security parameters
+  3. Protect stores cardholder data
+  4. Encrypt transmission of cardholder data across open, public networks
+  5. Use and regularly update anti-virus software or programs
+  6. Develop and maintain secure system and applications
+  7. Restrict access to cardholder data by business need to know.
+  8. Assign a unique ID to each person with computer access
+  9. Restrict physical access to cardholder data
+  10. Track and monitor all access to network resources and cardholder data
+  11. Regularly test security systems and processes
+  12. Maintain a policy that addresses information security for all personel
+  
+  [^1](https://www.pcisecuritystandards.org/documents/Prioritized-Approach-for-PCI_DSS-v3_2.pdf): PCI standards
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

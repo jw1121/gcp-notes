@@ -1,0 +1,123 @@
+createdAt: "2019-08-22T16:12:16.370Z"
+updatedAt: "2019-10-25T04:33:00.187Z"
+type: "MARKDOWN_NOTE"
+folder: "830f33e7d047ca73102c"
+title: "GCP Serverless"
+tags: []
+content: '''
+  # GCP Serverless
+  
+  **Sole-tenant nodes**
+  	- physical Compute Engine server that is dedicated to hosting VM instances only for your specific project.
+  	- some payment processing workloads might require physical isolation from other workloads or virtual machines in order to meet compliance requirements.
+  
+  Storage
+  	- Regional PD do not support Read Only (RO) mode.
+  IP Add
+  
+  #### Use case
+  - <b>App Engine</b>: Minimal-ops web apps, REST API backend
+  - <b>Cloud Function</b>: Single endpoint API small scale backend, Pub/Sub
+  - <b>Cloud Run</b>: Managed serverless container environment
+  
+  ## Cloud Function
+  > Event driven serverless execution environment for simple single-purpose functions
+  
+    - Guarantees at-least-once execution for each event.
+    - When max instance is set and load exceed the limit it will queue request for 60 second before it fails.
+   - in case when rapid traffic surges, CF may create more instances than max.
+   - When deploying new version, CF will gradually migrate the traffic.
+   - config retry policy
+  
+  ##### Best Practice
+   - CF should be idempotent which should produce same result even if they are called multiple times.
+   - Not sending proper response can stall CF execution until timeout and require cold start.
+   - Any activity that happens after function terminates (returns or signal completion) cannot access the CPU and may interfere when subsequent invocation by resuming background activity.
+   - Local disk storage (tmp file) or in memory data might persist between invocation. explicitly delete the these files after before completing each invocation.
+   - Do not throw uncaught exception as they will force cold start
+   - port 25 is blocked ( non secure SMTP connection not allowed)
+   - use global variables as cache between invocation, such as db connection
+   - global variables will increase CF latency on cold start.
+  
+  Limitation
+   - total CF per project: 10000
+   - max deployment size: 100mb (500mb uncompressed)
+   - max HTTP request size: 10MB
+   - max HTTP response size: 10MB
+   - max background event size: 10MB
+   - max memory: 2048MB
+   - max execution time: 540 sec
+   - max build time: 120 min
+   - max CF invocation: 100,000,000  /100 sec
+   - API Call:  read->5000/100 sec   write->80/100 sec  call-> 16/100 sec
+   - Socket Data: 10 GB / 100 sec
+   - max concurrent invocation: 1000
+  - Must be stateless to allow google to automatically manage and scale.
+  - Only one request per instance at a time.
+  - New function can only be started either by deploy new function or auto scale.
+  - Function will be reused unless it being scale down or function crashes.
+  - Global scope is executed once on a cold start.
+  - Function running outside of execution period is not guaranteed to execute.
+  - CF does not guarantee a single invocation.
+  	- HTTP functions are invoked at most once because synchronous in nature of HTTP call
+  	- background functions are invoked at least once because async in nature of handling events.
+  
+  ##### Error
+  - HTTP should use HTTP status code and background function should log and return error. Any CF throw	uncaught exception might restart.
+  
+  ##### Timeout
+  - CF execution time is limited by the timeout duration, which 1 min by default. And if your code runs outside of that time than error status is returned or never execute.
+  ##### File System
+  - /tmp is only writable part CF access to and its stored in memory. And rest of the file system is read-only.
+  ##### Network
+  -	your CF can access internet. But any connection unused for 2 min might get close by the system.
+  ##### Multiple function
+  -	every deployed CF is isolated from others and don’t share anything.
+  ##### Events 
+  -	CF supports: HTTP, GCS, PubSub, Firestore, Firebase, Stackdriver
+  -	when event is triggered data is passed via the function’s parameters and event type determines the parameters.
+  ##### Triggers
+  -	Binding to trigger allow you to capture/act on events and the binding happens at deployment time.
+  -	The same function cannot bind to more than a single trigger at a time. But same trigger can cause multiple functions to execute by simply deploying two different functions with the same trigger.
+  
+  
+  ## App Engine
+  ###  Standard environment 
+   - Firewall rule only apply to the ingress traffic since GAE do not run inside your VPC network.
+   - Based on preconfigured container 
+   - supports go, java, nodes, php, python
+   - free bandwidth and  1GB storage.
+   - two generations of runtime.
+   - instance runs in sandbox
+  
+   - instance starts in seconds
+   - 60 seconds request timeout
+   - you can have background thread but no BG process
+   - read and write to /tmp
+   - no SSH, no runtime modification.
+   - hourly rate
+  
+  ### Flexible environment
+   - Flexible environment restarts weekly
+   - Always have root access
+   - Based on GCE with auto scale
+   - supports any version go, java, nodes, php, python, .net, ruby
+   - Charge by vCPU, memory, storage
+  
+   - instance starts in minutes
+   - 60 minute request timeout
+   - allow bg thread and processes
+   - allow SSH login
+   - minimum 1 instance
+   - ephemeral storage
+   - allowed runtime modification through Dockerfile
+  
+  
+  - ***App engine is regional but once created. it can’t be changed***
+  - ***When the following resource is depleted, App Engine by default returns an HTTP 403 or 503 error code for the request: Bandwidth, incoming and outgoing, Instance hours***
+  - ***connection to same network on same region but no connection on same network on different region***
+  
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

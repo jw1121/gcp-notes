@@ -1,0 +1,110 @@
+createdAt: "2019-08-26T23:50:12.593Z"
+updatedAt: "2019-11-02T14:17:39.858Z"
+type: "MARKDOWN_NOTE"
+folder: "830f33e7d047ca73102c"
+title: "GCP Kubernete"
+tags: []
+content: '''
+  
+  ![1*r27TvmTUKNvaLmahvTsLIQ.gif](https://miro.medium.com/max/1613/1*r27TvmTUKNvaLmahvTsLIQ.gif =550x250 )
+  ![pods-on-node.gif](https://matthewpalmer.net/kubernetes-app-developer/articles/pods-on-node.gif =500x350) 
+  
+  # GCP Kubernete
+  
+  > <B>Features</B>:
+    LoadBalacing, Node pools and auto repair, Auto scaling, Auto upgrade, Logging and monitoring
+  
+  Two type of access control in K8:
+    - Kubernetes RBAC
+    - Cloud IAM
+  
+  ## Cluster
+  * Cluster is group of nodes where node is a physical/virtual machine.
+  * Node runs Docker Runtime, Kubelet and other special containers.
+  *  `n1-standard-1` and `container optimized OS` as default machine type for a node.
+  * There is only master for 1+ zones. During the cluster upgrade master is not available and cannot make changes to the workload. In regional cluster,  one master is upgrade at a time, in random order and only the zonal node is unavailable while being upgraded.
+  * In a regional cluster, if VM cannot be created in one zone that whole cluster is cannot be created or upgrade.
+  * Auto upgrade for node pool is disabled, if node becomes unhealty.
+  * Maintenance window cloud be set to control when auto upgrade occurs.
+  * You can only select cluster is zonal or regional during creation time and cannot covert an existing cluster.
+  * By default region cluster is 9 nodes spread evenly across 3 zones.
+  * Persistent storage disk are zonal resource.
+  * Cluster autoscale works on per-node pool.
+  
+  ## Workload
+  ### Pod
+  - The smallest deployable object in k8s and single instance running in a  cluster.
+  - Pod can have 1+ containers and they share IP and storage volume. 
+  - Pod don't have upper bound maximum on CPU or memory
+  - Default graceful termination period is 30 second.
+  - Deployment represent pod specification and determines how each pod should look like.
+  - Deployment styles
+    - <b>Deployment</b>: well suited for stateless application
+    - <b>StatefulSets</b>: well suited for stateful application
+      - deploys in sequence order and terminates in reverse order.
+      - Suitable for DB, Kafka, Redis, etc
+    - <b>DaemonSets</b>: adhere to one pod per node model.
+  - <b>ConfigMaps</b> bind configuration artifacts to your pods' container and system component at runtime.
+    - useful for storing and sharing non-sensitive config.
+  
+  ### Service
+   An abstract way to expose an application running on a set of Pods as a network service.
+  
+   - K8s use labels to group multiple related Pods into a logical unit called Service 
+   - K8S manages connectivity among Pods and Services using the `kube-proxy` component, which runs on each node.
+   - `kube-proxy` manages the port remapping by configuring `iptables` rules on the node
+   - Cluster master is responsible for deciding what runs on all nodes
+  
+  #### Service types:
+    - <b>ClusterIP</b>: The IP assigned to the Service from the cluster's VPC  network. and it is not expose outside the cluster.
+    - <b>NodePort</b>: Expose service on each Node's IP at a static port and reachable from outside.
+      - can only be higher than 30000
+    - <b>LoadBalance</b>: expose externally through a loadbalancer
+    - <b>ExternalName</b>: maps the service to the value by `CNAME`
+    - <b>Headless</b>: point directly to pods without LB or proxy
+  
+  ## Network
+  - Each node has range of IPs (CIDR block) to assign it to the running pod on that node.
+  - All containers in the Pod shares the IP address.
+  - The Load Balancer is use to manage traffic comming from outside the cluster.
+  - The traffic is balanced across all nodes in the cluster, even those not running a relevent Pod. on regional cluster, the load is spread across all nodes in all zones. When traffic is routed to a node, the node routes the traffic to a Pod, which may be running on the same node or a different node. The node forwards the traffic to a randomly chosen Pod using the iptables.
+  - HTTP(S) load balancer use NodePort and clusterIP
+  
+  ## Storage
+  - Volumes are ephemaral or durable storage accissible to Pod.
+  - PersistentVolumes are cluster resources that Pods can use for durable storage.
+  - Types: emptyDir, configMap, secrete, downwardAPI, persistentVolumeClaim
+  
+  ## Limit
+  - 50 cluster per zone
+  - 50 regional cluster per region
+  - 5000 nodes per cluster
+  - 1000 nodes per node pool
+  - 110 Pods per node
+  - 300000 containers
+  
+  Load-balance
+  Node Pool - auto scaling, self healing, logging, and monitoring
+  
+  cluster 
+  cluster API in master - hub for all communication for the cluster.
+  
+  
+  
+  
+  
+  -
+  
+  
+  
+  
+  
+  
+  
+'''
+linesHighlighted: [
+  56
+  21
+]
+isStarred: false
+isTrashed: false

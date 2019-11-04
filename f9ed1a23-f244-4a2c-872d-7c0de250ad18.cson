@@ -1,0 +1,33 @@
+createdAt: "2019-06-22T19:24:14.096Z"
+updatedAt: "2019-08-22T16:24:07.929Z"
+type: "MARKDOWN_NOTE"
+folder: "830f33e7d047ca73102c"
+title: "Network"
+tags: []
+content: '''
+  # Network
+  
+  Cloud Interconnect
+   
+   - has maintenance cost 
+  
+   Dedicated Interconnect
+   - 10Gb or 100Gb physical connection with max 80gb or 200Gb
+   - traffic not encrypted and Google Cloud VPN not supported
+  
+  Partner Interconnect
+   - provides more connection point
+   - no maintain of routing equipment or installation
+   - SLA based on your service provider
+   -  traffic not encrypted.
+  
+  
+  Peering
+   - does not require GCP
+  
+  
+  Cloud VPN
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: true

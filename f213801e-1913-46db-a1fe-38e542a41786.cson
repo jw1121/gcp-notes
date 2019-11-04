@@ -1,0 +1,193 @@
+createdAt: "2019-08-22T16:16:26.327Z"
+updatedAt: "2019-11-01T05:26:37.553Z"
+type: "MARKDOWN_NOTE"
+folder: "830f33e7d047ca73102c"
+title: "GCP Management tools"
+tags: []
+content: '''
+  # GCP Management tools
+  
+  ## Deployment Manager
+  > Create and manage specific GCP resources in declarative yaml format and parameterize configuration using Python or Jinja2 template.
+  
+  ### Templating 
+  - Resources have the following sections:
+      ```
+      resources:
+          name: [config_name]
+          type: [service_type]
+          properties:
+                [properties]
+      ```
+      - `name` is user defined string to identify this resource
+      - `type` is the type resource being deployed `eg. compute.v1.instance`
+      - `properties` are parameters for this resource type.
+  - DM require API access for the service you want to manage.
+  - You can have composite type to contain one or more templates.
+  - You can use `manifest` to troublshoot issue with deplyment as it contains expanded resource list created by Deployment Manager.
+  - use `imports` to embed child template.
+  - <B>Configuration</B> file structure:
+      ```
+      imports:
+      - paths: path/to/template.jinja
+        name: my-template
+  
+      resources:
+      - name: name_of_resource
+        type: vm-template1.py
+        property:
+          property-1: value   
+      ```
+  - <B>Template</B> is separate file that is imported and used as type in Confiugration.
+  - No limit on how many templates you can have.
+  - Template can be written in Python or Jinja 2 where Python is more advanced.
+  - Deployment Manager supports few Python libraries and block any code that makes system or network call.
+  - You can use `references` to properties of other resources instead of directly providing values.
+      ```
+        ...
+        properties:
+          network: $(ref.network-a.selfLink)
+      - name: network-a
+        type: compute.v1.network
+        properties:
+        ...
+      ```
+  - you can specify dependencies using the `dependsOn` option and DM creates or updates the dependencies before executing the resource.
+      ```
+      resources:
+      - name: a-special-vm
+      type: compute.v1.instances
+      properties:
+          ...
+  
+      metadata:
+          dependsOn:
+          - persistent-disk-a
+          - persistent-disk-b
+  
+      - name: persistent-disk-a
+      type: compute.v1.disks
+      properties:
+          ...
+      ```
+  - You can create custom type provider with API descriptor document.
+  - Using <B>Provider</B> One can specify custom type `example-directoyr-api` provider and resource known as `person` as  
+      ``` type: my-project/example-directory-api:person ```
+  - Share type across projects via IAM `deploymentmanager.typeViewer` with the following stmt in your configuration file.
+      ``` type: [PROJECT_ID]/[TYPE]:[COLLECTION]```
+  - Runtime configuration can be define as:
+      ```
+      resources:
+      - name: [Config_name]
+        type: runtimeconfig.v1beta1.config
+        properties:
+          config: [Config_name]
+          description: [description]
+      ```
+  ### Best Practice
+  - When defining compute with persistent disk, Use disk separately from instance for flexbility.
+  - Use `privateClusterConfig` for private GKE with Deployment Manager.
+  - Use schema for defining rules for configuration file.
+  - use properties and output to pass in/out variable like to template and other resource.
+  - <B><U>Runtime configurator</U></B>, let you define and store hierarchy of key-value pair to later use as dynamic config, stat communication, data change notification, share infor b/t multiple tier.
+  
+  
+  
+  ## Cloud Console
+  > Admin UI for suite of GCP products
+  
+  ## Cloud Shell
+  > Provides command-line acces to your cloud resource directly from the broswer.
+  - Gives you g1-small GCE Debian instance with ephemeral, pre-configured docker container.
+  - 5GB free private persistent storage mounted at `$HOME`
+  - Globally distributed acrossed multiple regions. You'll be assigned closet available georegion.
+  - Provisioned on per user, per session based.
+  - You open Cloud Shell in safe mode to fix any issue.
+  - `Boost mode` temporarily increases your VM to N1-standard-1 for 24 hours.
+  - Session is terminates and the VM is discarded after an hour of inactivity.
+  - Home directory will be delete after 120 days
+  - Sessions are capped as 12 hour and new session have to be created.
+  - You can interact with cloud shell from your terminal using  `glcoud cloud-shell` command.
+  
+  ## Stackdriver Monitoring
+  > Provides visibility into the performance, uptime, and overall health an application.
+  
+  - A Workspace is a tool for monitoring resources from GCP projects or AWS accounts.
+  - Monitoring has Alerting, Uptime check, Metric tool functionality
+  - Uptime check works with HTTP(S) or TCP on internal or external resource.
+  - Metric is collected as time series data.
+  - Must enable monitoring agent, collectd, to install on VM and kubernete instances.
+  
+  ## Logging
+  > allows you to store, search, analyze, monitor, and alert on log data and events from GCP and AWS.
+  
+  - Log is collected through fluentd then stream from VMs and it is included in K8s and App Engine.
+  - Logs are associate with projects
+  - A log entry records status or event
+  - Log will not record without an entry
+  - Log entry use `Resource type` to indicate wher it came from
+  - Log can be exported via sink
+  - A log-based metric is a metric whose value is the number of log entries that match a query that you specify.
+  - `IAM viewer` role is required to read the log except Access Transparency log which requires `IAM Owner` role.
+  - The log can be exported to  GCS, Pub/Sub, BigQuery
+  - User can setup log to exclude ingestion.
+  - Audit Logs captures Admin activity and data Access. And help answer “who did what, where, and when”
+  
+  | Audit Log Type      | Retention peroid |
+  | ------------------- | ---------------- |
+  | Admin activity log  | 400 days         |
+  | Data access log     | 30 days          |
+  | System event log    | 400 days         |
+  | Access log          | 400 days         |     
+    
+  ## Error Reporting
+  > Counts, analyzes, and aggregates the crashes in your running services
+  - Supports GO, Java, Node.js, PHP, Python, Ruby, .NET languages
+  - Available for Cloud Function, App Engine (std, flex), Apps Script, Cloud Run, Kubernete, AWS EC2
+  
+  ## Trace
+  > A distributed tracing system that collects latency data from  your applications and display it in the GCP console.
+  - Runs on Compute Engine, K8S, App Enginge (std, flex)
+  
+  ## Debugger
+  > Let you inspect state of a running application in realtime, withour stopping or slowing it down.
+  - Debbuger can be used with or without the access to your app's source code.
+  - Debbyger snapshot capture local variable and the call stackat a specific line location in your app's source code.
+  - Snapshot is taken only once during the app runtime.
+  - Debbuger allow to inject logging into running service without restarting or interfering with the normal operation.
+  
+  ## Profiler
+  > Helps developers understand resources consumption and the call hierarchy of the relevant function in a interactive flame graph.
+  - Profiling puts an additional load on the program.
+  - Profiling agent is attached to the code, periodically look at the call stack and collect information. (eg. CPU, memory)
+  
+  # Migration
+  ## Process of planning and execution
+  1. Compare the operational cost of on-preme vs cloud.
+  2. Evaluate app into easy, hard, and can't moaved.
+  3. Design the migration:
+  4. Establish who can do what to a resource.
+  5. Design your network
+     1. one network for each app or each env
+     2. how apps access shared resource
+     3. hub-and-spoke or fulle network mesh
+     4. VPN or cross project network
+     5. VPN or Interconnect or direct peering to/from on-preme
+  6. Plan how to manage and operate apps in the cloud
+  7. Finally migrate the app
+  
+  ## Migration architecture
+  ### Lift and shift migration
+  - Move the data
+  - Move the VMs
+  - Test the app
+  - Move to production
+  ### Hybrid migration
+  - Determine the network connection
+  - Move the VMs
+  - Move to production (usually frontend only)
+  ### Redesign app for cloud
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

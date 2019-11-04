@@ -1,0 +1,137 @@
+createdAt: "2019-10-24T14:23:18.511Z"
+updatedAt: "2019-11-04T00:14:02.103Z"
+type: "MARKDOWN_NOTE"
+folder: "830f33e7d047ca73102c"
+title: "Certification topics"
+tags: []
+content: '''
+  # Certification topics
+  
+  ### Compute
+  
+  -   **App Engine**: Managed app platform  [🔗](https://cloud.google.com/appengine/)  [📄](https://cloud.google.com/appengine/docs/)
+  -   **Cloud Functions**: Event-driven serverless functions  [🔗](https://cloud.google.com/functions/)  [📄](https://cloud.google.com/functions/docs/)
+  -   **Cloud Run  🆕**: Serverless for containerized applications  [🔗](https://cloud.google.com/run/)  [📄](https://cloud.google.com/run/docs/)
+  -   **Compute Engine**: VMs, GPUs, TPUs, Disks  [🔗](https://cloud.google.com/compute/)  [📄](https://cloud.google.com/compute/docs/)
+  -   **Kubernetes Engine (GKE)**: Managed Kubernetes/containers  [🔗](https://cloud.google.com/kubernetes-engine/)  [📄](https://cloud.google.com/kubernetes-engine/docs/)
+  -   **Anthos  🆕**: Enterprise hybrid/multi-cloud platform  [🔗](https://cloud.google.com/anthos/)  [📄](https://cloud.google.com/anthos/docs/)
+  
+  ### [](https://github.com/gregsramblings/google-cloud-4-words#storage)Storage
+  
+  -   **Cloud Storage**: Object storage and serving  [🔗](https://cloud.google.com/storage/)  [📄](https://cloud.google.com/storage/docs/)
+  -   **Nearline**: Archival occasional access storage  [🔗](https://cloud.google.com/storage/archival/)  [📄](https://cloud.google.com/storage/docs/)
+  -   **Coldline**: Archival rare access storage  [🔗](https://cloud.google.com/storage/archival/)  [📄](https://cloud.google.com/storage/docs/)
+  -   **Persistent Disk**: VM-attached disks  [🔗](https://cloud.google.com/persistent-disk/)  [📄](https://cloud.google.com/compute/docs/disks/)
+  -   **Cloud Filestore**: Managed NFS server  [🔗](https://cloud.google.com/filestore/)  [📄](https://cloud.google.com/filestore/docs/)
+  
+  ### [](https://github.com/gregsramblings/google-cloud-4-words#database)Database
+  
+  -   **Cloud Bigtable**: Petabyte-scale, low-latency, non-relational  [🔗](https://cloud.google.com/bigtable/)  [📄](https://cloud.google.com/bigtable/docs/)
+  -   **Cloud Datastore**: Horizontally scalable document DB  [🔗](https://cloud.google.com/datastore/)  [📄](https://cloud.google.com/datastore/docs/)
+  -   **Cloud Firestore**: Strongly-consistent serverless document DB  [🔗](https://cloud.google.com/firestore/)  [📄](https://cloud.google.com/firestore/docs/)
+  -   **Cloud Memorystore**: Managed Redis  [🔗](https://cloud.google.com/memorystore/)  [📄](https://cloud.google.com/memorystore/docs/)
+  -   **Cloud Spanner**: Horizontally scalable relational DB  [🔗](https://cloud.google.com/spanner/)  [📄](https://cloud.google.com/spanner/docs/)
+  -   **Cloud SQL**: Managed MySQL and PostgreSQL  [🔗](https://cloud.google.com/sql/)  [📄](https://cloud.google.com/sql/docs/)
+  
+  ### [](https://github.com/gregsramblings/google-cloud-4-words#data-and-analytics)Data and Analytics
+  
+  -   **BigQuery**: Data warehouse/analytics  [🔗](https://cloud.google.com/bigquery/)  [📄](https://cloud.google.com/bigquery/docs/)
+  -   **Cloud Composer**: Managed workflow orchestration service  [🔗](https://cloud.google.com/composer/)  [📄](https://cloud.google.com/composer/docs/)
+  -   **Cloud Dataflow**: Stream/batch data processing  [🔗](https://cloud.google.com/dataflow/)  [📄](https://cloud.google.com/dataflow/docs/)
+  -   **Cloud Datalab**: Managed Jupyter notebook  [🔗](https://cloud.google.com/datalab/)  [📄](https://cloud.google.com/datalab/docs/)
+  -   **Cloud Dataprep**: Visual data wrangling  [🔗](https://cloud.google.com/dataprep/)  [📄](https://cloud.google.com/dataprep/docs/)
+  -   **Cloud Dataproc**: Managed Spark and Hadoop  [🔗](https://cloud.google.com/dataproc/)  [📄](https://cloud.google.com/dataproc/docs/)
+  -   **Cloud Pub/Sub**: Global real-time messaging  [🔗](https://cloud.google.com/pubsub/)  [📄](https://cloud.google.com/pubsub/docs/)
+  
+  ### [](https://github.com/gregsramblings/google-cloud-4-words#networking)Networking
+  
+  -   **Carrier Peering**: Peer through a carrier  [📄](https://cloud.google.com/interconnect/docs/how-to/carrier-peering)
+  -   **Direct Peering**: Peer with GCP  [📄](https://cloud.google.com/interconnect/docs/how-to/direct-peering)
+  -   **Dedicated Interconnect**: Dedicated private network connection  [📄](https://cloud.google.com/interconnect/docs/details/dedicated)
+  -   **Partner Interconnect**: Connect on-prem network to VPC  [📄](https://cloud.google.com/interconnect/docs/concepts/partner-overview)
+  -   **Cloud Armor**: DDoS protection and WAF  [🔗](https://cloud.google.com/armor/)  [📄](https://cloud.google.com/armor/docs/)
+  -   **Cloud CDN**: Content delivery network  [🔗](https://cloud.google.com/cdn/)  [📄](https://cloud.google.com/cdn/docs/)
+  -   **Cloud DNS**: Programmable DNS serving  [🔗](https://cloud.google.com/dns/)  [📄](https://cloud.google.com/dns/docs/)
+  -   **Cloud Load Balancing**: Multi-region load distribution  [🔗](https://cloud.google.com/load-balancing/)  [📄](https://cloud.google.com/load-balancing/docs/)
+  -   **Cloud NAT**: Network address translation service  [📄](https://cloud.google.com/nat/docs/overview/)
+  -   **Cloud Router  🆕**: VPC/on-prem network route exchange (BGP)  [📄](https://cloud.google.com/router/docs/)
+  -   **IPsec VPN**: Virtual private network connection  [📄](https://cloud.google.com/compute/docs/vpn/overview)
+  -   **Network Service Tiers**: Price vs performance tiering  [🔗](https://cloud.google.com/network-tiers/)  [📄](https://cloud.google.com/network-tiers/docs/)
+  -   **Virtual Private Cloud**: Software defined networking  [🔗](https://cloud.google.com/vpc/)  [📄](https://cloud.google.com/vpc/docs/)
+  -   **Cloud Endpoints**: Cloud API gateway  [🔗](https://cloud.google.com/endpoints/)
+  
+  ### [](https://github.com/gregsramblings/google-cloud-4-words#internet-of-things-iot)Internet of Things (IoT)
+  
+  -   **Cloud IoT Core**: Manage devices, ingest data  [🔗](https://cloud.google.com/iot-core/)  [📄](https://cloud.google.com/iot-core/docs/)
+  
+  ### [](https://github.com/gregsramblings/google-cloud-4-words#identity-and-security)Identity and Security
+  
+  -   **Access Transparency**: Audit cloud provider access  [🔗](https://cloud.google.com/access-transparency/)  [📄](https://cloud.google.com/logging/docs/audit/access-transparency-overview/)
+  -   **Binary Authorization**: Kubernetes deploy-time security  [🔗](https://cloud.google.com/binary-authorization/)  [📄](https://cloud.google.com/binary-authorization/docs/)
+  -   **Cloud Audit Logs  🆕**: Audit trails for GCP  [🔗](https://cloud.google.com/audit-logs/)  [📄](https://cloud.google.com/logging/docs/audit/)
+  -   **Cloud Data Loss Prevention API**: Classify and redact sensitive data  [🔗](https://cloud.google.com/dlp/)  [📄](https://cloud.google.com/dlp/docs/)
+  -   **Cloud HSM**: Hardware security module service  [🔗](https://cloud.google.com/hsm/)  [📄](https://cloud.google.com/kms/docs/hsm/)
+  -   **Cloud IAM**: Resource access control  [🔗](https://cloud.google.com/iam/)  [📄](https://cloud.google.com/iam/docs/)
+  -   **Cloud Identity**: Manage users, devices & apps  [🔗](https://cloud.google.com/identity/)  [📄](https://cloud.google.com/identity/solutions/overview/)
+  -   **Cloud Identity-Aware Proxy**: Identity-based app sign in  [🔗](https://cloud.google.com/iap/)  [📄](https://cloud.google.com/iap/docs/)
+  -   **Cloud Key Management Service**: Hosted key management service  [🔗](https://cloud.google.com/kms/)  [📄](https://cloud.google.com/kms/docs/)
+  -   **Cloud Resource Manager**: Cloud project metadata management  [🔗](https://cloud.google.com/resource-manager/)  [📄](https://cloud.google.com/resource-manager/docs/)
+  -   **Cloud Security Scanner**: App engine security scanner  [🔗](https://cloud.google.com/security-scanner/)  [📄](https://cloud.google.com/security-scanner/docs/)
+  -   **Cloud Security Command Center**: Asset inventory, discovery, search, management  [🔗](https://cloud.google.com/security-command-center/)  [📄](https://cloud.google.com/security-command-center/docs/)
+  -   **Context-aware Access  🆕**: End-user attribute-based access control  [🔗](https://cloud.google.com/context-aware-access/)  [📄](https://cloud.google.com/iap/docs/cloud-iap-context-aware-access-howto/)
+  -   **Event Threat Detection  🆕**: Scans for suspicious activity  [🔗](https://cloud.google.com/event-threat-detection/)
+  -   **Managed Service for Microsoft Active Directory  🆕**: Managed Microsoft Active Directory  [🔗](https://cloud.google.com/managed-microsoft-ad/)  [📄](https://cloud.google.com/managed-microsoft-ad/docs/)
+  -   **Security Key Enforcement**: Two-step key verification  [🔗](https://cloud.google.com/security-key/)
+  -   **Shielded VMs**: Hardened VMs  [🔗](https://cloud.google.com/shielded-vm/)  [📄](https://cloud.google.com/security/shielded-cloud/shielded-vm/)
+  -   **Titan Security Key**: Two-factor authentication (2FA) device  [🔗](https://cloud.google.com/titan-security-key/)
+  -   **VPC Service Controls  🆕**: VPC constrain data  [🔗](https://cloud.google.com/vpc-service-controls/)  [📄](https://cloud.google.com/vpc-service-controls/docs/)
+  
+  ### [](https://github.com/gregsramblings/google-cloud-4-words#management-tools)Management Tools
+  
+  -   **Cloud APIs**: APIs for cloud services  [🔗](https://cloud.google.com/apis/)  [📄](https://cloud.google.com/apis/docs/)
+  -   **Cloud Billing**: Billing and cost management tools  [🔗](https://cloud.google.com/billing/docs/)  [📄](https://cloud.google.com/billing/docs/docs/)
+  -   **Cloud Billing API**: Programmatically manage GCP billing  [📄](https://cloud.google.com/billing/docs/)
+  -   **Cloud Console**: Web-based management console  [🔗](https://cloud.google.com/cloud-console/)
+  -   **Cloud Deployment Manager**: Templated infrastructure deployment  [🔗](https://cloud.google.com/deployment-manager/)  [📄](https://cloud.google.com/deployment-manager/docs/)
+  -   **Cloud Mobile App**: iOS/Android GCP manager app  [🔗](https://cloud.google.com/console-app/)
+  -   **Cloud Shell**: Browser-based terminal/CLI  [🔗](https://cloud.google.com/shell/)  [📄](https://cloud.google.com/shell/docs/)
+  -   **Stackdriver Debugger**: Live production debugging  [🔗](https://cloud.google.com/debugger/)  [📄](https://cloud.google.com/debugger/docs/)
+  -   **Stackdriver Error Reporting**: App error reporting  [🔗](https://cloud.google.com/error-reporting/)  [📄](https://cloud.google.com/error-reporting/docs/)
+  -   **Stackdriver Logging**: Centralized logging  [🔗](https://cloud.google.com/logging/)  [📄](https://cloud.google.com/logging/docs/)
+  -   **Stackdriver Monitoring**: Infrastructure and application monitoring  [🔗](https://cloud.google.com/monitoring/)  [📄](https://cloud.google.com/monitoring/docs/)
+  -   **Stackdriver Profiler**: CPU and heap profiling  [🔗](https://cloud.google.com/profiler/)  [📄](https://cloud.google.com/profiler/docs/)
+  -   **Stackdriver Transparent SLIs**: Monitor GCP services  [🔗](https://cloud.google.com/transparent-sli/)  [📄](https://cloud.google.com/apis/docs/monitoring/)
+  -   **Stackdriver Trace**: App performance insights  [🔗](https://cloud.google.com/trace/)  [📄](https://cloud.google.com/trace/docs/)
+  
+  ### [](https://github.com/gregsramblings/google-cloud-4-words#developer-tools)Developer Tools
+  
+  -   **Cloud SDK**: CLI for GCP  [🔗](https://cloud.google.com/sdk/)  [📄](https://cloud.google.com/sdk/docs/)
+  -   **Cloud Build**: Continuous integration/delivery platform  [🔗](https://cloud.google.com/cloud-build/)  [📄](https://cloud.google.com/cloud-build/docs/)
+  -   **Cloud Code  🆕**: Cloud native IDE extensions  [🔗](https://cloud.google.com/code/)  [📄](https://cloud.google.com/code/docs/)
+  -   **Cloud Source Repositories**: Hosted private git repos  [🔗](https://cloud.google.com/source-repositories/)  [📄](https://cloud.google.com/source-repositories/docs/)
+  -   **Cloud Scheduler**: Managed cron job service  [🔗](https://cloud.google.com/scheduler/)  [📄](https://cloud.google.com/scheduler/docs/)
+  -   **Cloud Tasks  🆕**: Asynchronous task execution  [🔗](https://cloud.google.com/tasks/)  [📄](https://cloud.google.com/tasks/docs/)
+  -   **Container Registry**: Private container registry/storage  [🔗](https://cloud.google.com/container-registry/)  [📄](https://cloud.google.com/container-registry/docs/)
+  
+  ### [](https://github.com/gregsramblings/google-cloud-4-words#migration-to-gcp)Migration to GCP
+  
+  -   **Cloud Data Transfer**: Data migration tools/CLI  [🔗](https://cloud.google.com/products/data-transfer/)
+  -   **Google Transfer Appliance**: Rentable data transport box  [🔗](https://cloud.google.com/transfer-appliance/)  [📄](https://cloud.google.com/transfer-appliance/docs/)
+  -   **Cloud Storage Transfer Service**: Cloud to cloud transfers  [📄](https://cloud.google.com/storage/transfer/)
+  -   **BigQuery Data Transfer Service**: Bulk import analytics data  [🔗](https://cloud.google.com/bigquery/transfer/)  [📄](https://cloud.google.com/bigquery/transfer/docs/)
+  -   **Migrate from Amazon Redshift  🆕**: Migrate from Redshift to BigQuery  [🔗](https://cloud.google.com/bigquery/docs/redshift-migration)
+  -   **Migrate from Teradata  🆕**: Migrate from Teradata to BigQuery  [🔗](https://cloud.google.com/solutions/migration/td2bq/td-bq-migration-overview)
+  -   **Migrate for Anthos  🆕**: Migrate VMs to GKE containers  [🔗](https://cloud.google.com/migrate/anthos/)  [📄](https://cloud.google.com/migrate/anthos/docs/getting-started)
+  -   **Migrate for Compute Engine**: Compute Engine migration tools  [🔗](https://cloud.google.com/migrate/compute-engine/)  [📄](https://cloud.google.com/velostrata/docs/)
+  -   **VM Migration**: VM migration tools  [🔗](https://cloud.google.com/vm-migrate/)
+  
+  ### [](https://github.com/gregsramblings/google-cloud-4-words#api-platform-and-ecosystems)API Platform and Ecosystems
+  
+  
+  
+  
+  
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
