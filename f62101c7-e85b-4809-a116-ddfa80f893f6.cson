@@ -1,5 +1,5 @@
 createdAt: "2019-08-22T16:12:16.370Z"
-updatedAt: "2019-10-25T04:33:00.187Z"
+updatedAt: "2019-11-05T00:41:08.256Z"
 type: "MARKDOWN_NOTE"
 folder: "830f33e7d047ca73102c"
 title: "GCP Serverless"
@@ -82,9 +82,12 @@ content: '''
   
   
   ## App Engine
+  - App engine is regional but once created. it can’t be changed
+  - When the following resource is depleted, App Engine by default returns an HTTP 403 or 503 error code for the request: Bandwidth, incoming and outgoing, Instance hours
+  - connection to same network on same region but no connection on same network on different region
+  
   ###  Standard environment 
    - Firewall rule only apply to the ingress traffic since GAE do not run inside your VPC network.
-   - Based on preconfigured container 
    - supports go, java, nodes, php, python
    - free bandwidth and  1GB storage.
    - two generations of runtime.
@@ -100,6 +103,7 @@ content: '''
   ### Flexible environment
    - Flexible environment restarts weekly
    - Always have root access
+   - Based on preconfigured container 
    - Based on GCE with auto scale
    - supports any version go, java, nodes, php, python, .net, ruby
    - Charge by vCPU, memory, storage
@@ -113,11 +117,9 @@ content: '''
    - allowed runtime modification through Dockerfile
   
   
-  - ***App engine is regional but once created. it can’t be changed***
-  - ***When the following resource is depleted, App Engine by default returns an HTTP 403 or 503 error code for the request: Bandwidth, incoming and outgoing, Instance hours***
-  - ***connection to same network on same region but no connection on same network on different region***
-  
 '''
-linesHighlighted: []
+linesHighlighted: [
+  81
+]
 isStarred: false
 isTrashed: false

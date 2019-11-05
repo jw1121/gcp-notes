@@ -1,5 +1,5 @@
 createdAt: "2019-09-07T20:17:18.359Z"
-updatedAt: "2019-11-03T23:57:18.429Z"
+updatedAt: "2019-11-05T00:21:47.508Z"
 type: "MARKDOWN_NOTE"
 folder: "830f33e7d047ca73102c"
 title: "GCP Storage"
@@ -9,7 +9,6 @@ content: '''
   <iframe width="560" height="315" src="https://www.youtube.com/embed/-Fkgp0pkSdc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   
   
-  ![data-lifecycle-3.svg](https://cloud.google.com/solutions/images/data-lifecycle-3.svg)
   ## Persistent Disk
   - Zonal and Regional standard and SSD persistant disks are durable network storage.
   - The data on each PD is distributed across several physical disks to ensure redundancy and optimal performance.

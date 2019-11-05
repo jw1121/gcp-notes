@@ -1,5 +1,5 @@
 createdAt: "2019-08-22T16:11:48.582Z"
-updatedAt: "2019-11-04T03:53:02.932Z"
+updatedAt: "2019-11-05T00:21:53.606Z"
 type: "MARKDOWN_NOTE"
 folder: "830f33e7d047ca73102c"
 title: "GCP Database"
@@ -7,11 +7,16 @@ tags: []
 content: '''
   # GCP Database
   
+  ![data-lifecycle-3.svg](https://cloud.google.com/solutions/images/data-lifecycle-3.svg)
   Global  - Spanner, Bigtable, Firestore
   Regional - Cloud SQL
   
+  ## Bigtable, Spanner, Datastore, BigQuery
+  - Automatically handle sharding and replication.
+  - Encrypted at rest 
+   
   ## BigTable
-  > Low latency, sacable data access NoSql database
+  > Low latency, sacable KV map NoSql database
   
   - Good for don’t require ACID and structure data
     - eventual consistent Storage
@@ -44,10 +49,8 @@ content: '''
   > fully managed, serverless, cloud NoSQL document database.
   
    - ACID/Transactional NoSql DB for web and mobile application.
-   - Automatically handle sharding and replication.
    - Optimized for small set of data.
    - Read by key is Strong consistency and others are eventual consistency.
-   - Encrypted at rest 
    - Highly structured schemaless data
    - Highly scalable
    
@@ -130,6 +133,8 @@ content: '''
   - **ETL**: Ingest, transform, and load data into a data warehouse, such as BigQuery.
   - **Log processing**: Process continuous event-log data processing to build real-time dashboards, app metrics, and alerts..
 '''
-linesHighlighted: []
+linesHighlighted: [
+  3
+]
 isStarred: false
 isTrashed: false

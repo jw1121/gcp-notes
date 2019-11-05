@@ -1,5 +1,5 @@
 createdAt: "2019-08-22T16:06:23.804Z"
-updatedAt: "2019-11-04T03:40:07.268Z"
+updatedAt: "2019-11-04T23:29:29.064Z"
 type: "MARKDOWN_NOTE"
 folder: "830f33e7d047ca73102c"
 title: "GCP Networking"
@@ -61,7 +61,7 @@ content: '''
   - Use IAM role to delegate administration.
   - Existing resources in service project doesnt automatically use shared network resource.
   ### VPC Peering
-  - Allow private RFC1918 connectivity across two VPC networks regardless or not they belong to same Organization or Prject.
+  - Allow private RFC1918 connectivity across two VPC networks regardless or not they belong to same Organization or Project.
   - VPC peering is advantagous over external IPs or VPN since the traffic stay within Google network. It provides low latency, lower security risk, and lower cost than egress charge from external IP.
   
   ---
@@ -82,8 +82,8 @@ content: '''
     - HTTPS proxy can have up to *15 certs* installed.
     - *SSL policy* to control the features of SSL (version, ciphers, etc)
     - supports TLS 1.0, 1.1, 1.2
-    - Backend serivces direct traffic to 1+ attached instance groupd (backends)
-    - connection drainig
+    - Backend serivces direct traffic to 1+ attached instance group (backends)
+    - connection draining available for instance group
     - Backend bucket direct traffic to GCS
     - Load is direct to the region closest to the user, to zone according to capacity and round-robin evenly within a zone
     - **Session affinity** redirect request from same client to the same VM instance

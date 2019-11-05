@@ -1,5 +1,5 @@
 createdAt: "2019-08-22T16:13:04.290Z"
-updatedAt: "2019-11-01T06:08:09.438Z"
+updatedAt: "2019-11-05T00:08:18.027Z"
 type: "MARKDOWN_NOTE"
 folder: "830f33e7d047ca73102c"
 title: "GCP Security"
@@ -8,7 +8,7 @@ content: '''
   # GCP Security  
   
   ## GCP IAM Service Account
-  > Full access control and visibility to centrolly manage cloud resources.
+  > Full access control and visibility to centrally manage cloud resources.
   
   - Manage authorization only.
   - SA is both `resource` and `identity`, where user can be granted access to SA and grant roles to a SA.
