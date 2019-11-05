@@ -1,5 +1,5 @@
 createdAt: "2019-09-07T20:17:18.359Z"
-updatedAt: "2019-11-05T00:21:47.508Z"
+updatedAt: "2019-11-05T05:58:32.694Z"
 type: "MARKDOWN_NOTE"
 folder: "830f33e7d047ca73102c"
 title: "GCP Storage"
@@ -60,6 +60,24 @@ content: '''
   - avoid smaller chunks and upload entire content in single chunk for latency cost and QPS
   - Available storage options: Multi-Regional Storage, Regional Storage, Nearline Storage, Coldline Storage
   
+  ### Object lifecycle management
+  - Each rule should contain only one rule.
+  - GCS performs only one action and re-evaluate before taking additional action if single object is subject to multiple actions.
+  - The following actions are supported:
+    - Delete  
+    - SetStorageClass
+  - The following conditions are supported:
+    - Age
+    - CreatedBefore
+    - IsLive  
+    - MatchesStorageClass
+    - NumberOfNewerVersions
+  - All conditions are optional but at least one is required
+  - There can be delay in when the object met condition and when action is taken.
+  - Update to lifecycle config can take upto 24hr
+  - `Delete` action will not take effect on object with *object hold* or *retention policy* not yet met.
+  - Object does not change as policy is updated. so condition is checked against original properties.
+  - 
   ## Cloud Storage gsutil
   
   ## Storage Transfer Service
